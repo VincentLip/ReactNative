@@ -6,9 +6,9 @@ export default function Home() {
 
     const [modalVisible,setModalVisible] = useState(false);
 
-
-    function AddArticle(){
+    function DisplayArticle(){
         setModalVisible(true)
+        
     }
 
     function closeModal(){
@@ -16,10 +16,11 @@ export default function Home() {
         setModalVisible(false)
     }
 
+
   return (
     <View>
-      <Button title="Ajouter un article" onPress={AddArticle}/>
-      <Add visible={modalVisible} closeModal={closeModal}/>
+      <Button title="Ajouter un article" onPress={DisplayArticle}/>
+      <Add visible={modalVisible} closeModal={closeModal} />
       
     </View>
   )

@@ -4,12 +4,14 @@ import React, { useState } from 'react'
 
 export default function Add(props) {
 
-    const [article,setArticle] = useState();
-    
+    const [article,setArticle] = useState('');
+
+    const [tabArticle,setTabArticle] = useState([]);
 
     function AddArticle(){
 
-            console.log(article)
+            tabArticle.push(article)
+            console.log(tabArticle)
     }
 
     return (
@@ -19,6 +21,7 @@ export default function Add(props) {
             <TextInput onChangeText={(text) => setArticle(text)}/>
             <Button title="Add" onPress={AddArticle} />
             <Button title="Cancel"  onPress={props.closeModal}/>
+            
         </View>
     </Modal>
     )
