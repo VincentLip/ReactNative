@@ -15,7 +15,7 @@ export default function Add(props) {
 
     return (
 
-    <Modal visible={props.visible}>
+    <Modal visible={props.visible} animationType="slide">
         <View>
             {/* <Pressable onPress={props.closeModal} style={({pressed})=> pressed && styles.pressedItem}>
                 <Image source={require('./assets/test.png')} style={styles.image} resizeMode='contain'></Image>
