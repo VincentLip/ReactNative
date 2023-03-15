@@ -33,7 +33,6 @@ export default function Home() {
 
       setTabArticle(tabArticle.filter(c => c.id != id))
       
-
     }
 
 
