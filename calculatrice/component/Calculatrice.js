@@ -110,6 +110,7 @@ export default function calculatrice() {
     <View style={styles.container}>
       <Text style={styles.title}>Calculatrice</Text>
       <Text style={styles.result} >{resultat}</Text>
+      <Text style={styles.operation}>{value}</Text>
       <View style={styles.firstline}>
         <Pressable onPress={reset} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>C</Text>
@@ -213,10 +214,13 @@ const styles = StyleSheet.create({
         margin : 5,
     },
     result : {
+
+        color : "black",
         fontSize : 100
     },
     title : {
 
+        color : "black",
         fontSize : 60
     },
     pressedItem : {
@@ -232,7 +236,10 @@ const styles = StyleSheet.create({
         textAlign : "center",
         fontSize : 40,
         margin : 5,
+    },
+    operation : {
 
-
+        color : "blue",
+        fontSize : 50
     }
 })
