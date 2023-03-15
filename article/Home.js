@@ -1,4 +1,4 @@
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import Add from './component/Add';
 import Article from './component/Article';
@@ -24,9 +24,16 @@ export default function Home() {
       setTabArticle(articlesCurrent => [
         ...articlesCurrent,
         { text : article , id : Math.random().toString()}
-     ])
+      ])
     setModalVisible(false)
       console.log(tabArticle)
+    }
+
+    function deleteArticle(id){
+
+      setTabArticle(tabArticle.filter(c => c.id != id))
+      
+
     }
 
 
@@ -37,11 +44,12 @@ export default function Home() {
       <Add visible={modalVisible} closeModal={closeModal} addArticle={addArticle}/>
       <FlatList data={tabArticle} renderItem={(itemData) => {
           return (
-            <Article text={itemData.item.text}/>
+            <Article text={itemData.item.text} id={itemData.item.id} deleteArticle={deleteArticle}/>
           )
         }} keyExtractor={(item,index) => {
           return item.id
         }}></FlatList>
+        
     </View>
   )
 }

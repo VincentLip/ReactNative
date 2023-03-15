@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 export default function Article(props) {
-  return (
+
+    function deleteArticle(){
+        console.log(props.id)
+        props.deleteArticle(props.id)
+    }
+
+    return (
     <View style={styles.articleItem}>
-      <Text style={styles.articleText}>
-        {props.text}
-      </Text>
+        <Pressable onPress={deleteArticle}>
+            <Text style={styles.articleText}>
+                {props.text}
+            </Text>
+        </Pressable>
     </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
