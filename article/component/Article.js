@@ -4,13 +4,13 @@ import React from 'react'
 export default function Article(props) {
 
     function deleteArticle(){
-        console.log(props.id)
+
         props.deleteArticle(props.id)
     }
 
     return (
     <View style={styles.articleItem}>
-        <Pressable onPress={deleteArticle}>
+        <Pressable onPress={deleteArticle} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.articleText}>
                 {props.text}
             </Text>
@@ -28,5 +28,9 @@ const styles = StyleSheet.create({
   },
   articleText : {
     color : "white",
-  }
+    },
+  pressedItem : {
+    borderRadius : 6,
+    backgroundColor : 'red',
+    },
 })
