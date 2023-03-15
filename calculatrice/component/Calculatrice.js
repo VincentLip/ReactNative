@@ -15,6 +15,7 @@ export default function calculatrice() {
     }
 
     function result(){
+        
         if(value == []){
 
             setResultat("0")
@@ -27,7 +28,7 @@ export default function calculatrice() {
             console.log(resultTmp)
             console.log(eval(resultTmp))
             resultTmp = eval(resultTmp)
-            setResultat(resultTmp)
+            setResultat(resultTmp.toFixed(2))
             console.log(resultat)
         }
     }
@@ -91,6 +92,10 @@ export default function calculatrice() {
         setValue(valueCurrent => [...valueCurrent,"/"]) 
     }
 
+    function point(){
+        setValue(valueCurrent => [...valueCurrent,"."]) 
+    }
+
 
 
   return (
@@ -106,6 +111,9 @@ export default function calculatrice() {
         </Pressable>
         <Pressable onPress={sub} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>-</Text>
+        </Pressable>
+        <Pressable onPress={point} style={({pressed}) => pressed && styles.pressedItem}>
+            <Text style={styles.button}>.</Text>
         </Pressable>
       </View>
       <View style={styles.firstline}>
