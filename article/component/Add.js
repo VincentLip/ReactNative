@@ -6,12 +6,11 @@ export default function Add(props) {
 
     const [article,setArticle] = useState('');
 
-    const [tabArticle,setTabArticle] = useState([]);
+    
 
     function AddArticle(){
 
-            tabArticle.push(article)
-            console.log(tabArticle)
+        props.addArticle(article)
     }
 
     return (
