@@ -96,6 +96,14 @@ export default function calculatrice() {
         setValue(valueCurrent => [...valueCurrent,"."]) 
     }
 
+    function left(){
+        setValue(valueCurrent => [...valueCurrent,"("]) 
+    }
+
+    function right(){
+        setValue(valueCurrent => [...valueCurrent,")"]) 
+    }
+
 
 
   return (
@@ -158,9 +166,18 @@ export default function calculatrice() {
             <Text style={styles.buttonNum}>0</Text>
         </Pressable>
       </View>
+      <View style={styles.firstline}>
       <Pressable onPress={result} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonResult}>=</Text>
         </Pressable>
+        <Pressable onPress={left} style={({pressed}) => pressed && styles.pressedItem}>
+            <Text style={styles.button}>(</Text>
+        </Pressable>
+        <Pressable onPress={right} style={({pressed}) => pressed && styles.pressedItem}>
+            <Text style={styles.button}>)</Text>
+        </Pressable>
+
+      </View>
     </View>
   )
 }
@@ -210,7 +227,7 @@ const styles = StyleSheet.create({
         backgroundColor : "black",
         color : "white",
         borderRadius : 10,
-        width: 235,
+        width: 110,
         height:50,
         textAlign : "center",
         fontSize : 40,
