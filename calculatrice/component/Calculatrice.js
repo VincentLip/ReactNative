@@ -15,16 +15,21 @@ export default function calculatrice() {
     }
 
     function result(){
-        let resultTmp ="";
-        
-        value.forEach(element => {
-            resultTmp +=element    
-        });
-        console.log(resultTmp)
-        console.log(eval(resultTmp))
-        resultTmp = eval(resultTmp)
-        setResultat(resultTmp)
-        console.log(resultat)
+        if(value == []){
+
+            setResultat("0")
+        }else{
+            let resultTmp ="";
+            
+            value.forEach(element => {
+                resultTmp +=element    
+            });
+            console.log(resultTmp)
+            console.log(eval(resultTmp))
+            resultTmp = eval(resultTmp)
+            setResultat(resultTmp)
+            console.log(resultat)
+        }
     }
 
     function zero(){  
@@ -93,60 +98,60 @@ export default function calculatrice() {
       <Text style={styles.title}>Calculatrice</Text>
       <Text style={styles.result} >{resultat}</Text>
       <View style={styles.firstline}>
-        <Pressable onPress={reset}>
+        <Pressable onPress={reset} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>C</Text>
         </Pressable>
-        <Pressable onPress={add}>
+        <Pressable onPress={add} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>+</Text>
         </Pressable>
-        <Pressable onPress={sub}>
+        <Pressable onPress={sub} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>-</Text>
         </Pressable>
       </View>
       <View style={styles.firstline}>
-        <Pressable onPress={one}>
+        <Pressable onPress={one} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>1</Text>
         </Pressable>
-        <Pressable onPress={two}>
+        <Pressable onPress={two} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum} >2</Text>
         </Pressable>
-        <Pressable onPress={three}>
+        <Pressable onPress={three} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>3</Text>
         </Pressable>
-        <Pressable onPress={mult}>
+        <Pressable onPress={mult} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>*</Text>
         </Pressable>
       </View>
       <View style={styles.firstline}>
-        <Pressable onPress={four}>
+        <Pressable onPress={four} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>4</Text>
         </Pressable>
-        <Pressable onPress={five}>
+        <Pressable onPress={five} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>5</Text>
         </Pressable>
-        <Pressable onPress={six}>
+        <Pressable onPress={six} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>6</Text>
         </Pressable>
-        <Pressable onPress={divi}>
+        <Pressable onPress={divi} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.button}>/</Text>
         </Pressable>
       </View>
       <View style={styles.firstline}>
-        <Pressable onPress={seven}>
+        <Pressable onPress={seven} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>7</Text>
         </Pressable>
-        <Pressable onPress={eight}>
+        <Pressable onPress={eight} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>8</Text>
         </Pressable>
-        <Pressable onPress={nine}>
+        <Pressable onPress={nine} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>9</Text>
         </Pressable>
-        <Pressable onPress={zero}>
+        <Pressable onPress={zero} style={({pressed}) => pressed && styles.pressedItem}>
             <Text style={styles.buttonNum}>0</Text>
         </Pressable>
       </View>
-      <Pressable onPress={result}>
-            <Text style={styles.button}>=</Text>
+      <Pressable onPress={result} style={({pressed}) => pressed && styles.pressedItem}>
+            <Text style={styles.buttonResult}>=</Text>
         </Pressable>
     </View>
   )
@@ -188,5 +193,21 @@ const styles = StyleSheet.create({
     title : {
 
         fontSize : 60
+    },
+    pressedItem : {
+        borderRadius : 10,
+        backgroundColor : 'red',
+    },
+    buttonResult : {
+        backgroundColor : "black",
+        color : "white",
+        borderRadius : 10,
+        width: 235,
+        height:50,
+        textAlign : "center",
+        fontSize : 40,
+        margin : 5,
+
+
     }
 })
