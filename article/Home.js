@@ -1,6 +1,7 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import Add from './component/Add';
+import Article from './component/Article';
 
 export default function Home() {
 
@@ -20,7 +21,11 @@ export default function Home() {
 
     function addArticle(article){
 
-    setTabArticle(article)
+      setTabArticle(articlesCurrent => [
+        ...articlesCurrent,
+        { text : article , id : Math.random().toString()}
+     ])
+    setModalVisible(false)
       console.log(tabArticle)
     }
 
@@ -30,7 +35,13 @@ export default function Home() {
     <View style={styles.container}>
       <Button title="Ajouter un article" onPress={DisplayArticle} />
       <Add visible={modalVisible} closeModal={closeModal} addArticle={addArticle}/>
-      
+      <FlatList data={tabArticle} renderItem={(itemData) => {
+          return (
+            <Article text={itemData.item.text}/>
+          )
+        }} keyExtractor={(item,index) => {
+          return item.id
+        }}></FlatList>
     </View>
   )
 }
