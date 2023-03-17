@@ -5,14 +5,12 @@ import { MEALS } from '../data/data'
 
 export default function Recette({navigation , route}) {
 
-    const idCategory = route.params.id
-    
+    const idCategory = route.params.idCategory
+    console.log(idCategory)
     function Find(id){
 
         MEALS.forEach(element => {
-
             if(id == element.categoryIds){
-
                 console.log(element)        
             }        
         })
