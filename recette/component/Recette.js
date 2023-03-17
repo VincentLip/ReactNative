@@ -16,7 +16,7 @@ export default function Recette({navigation , route}) {
         })
         
     }
-    
+    Find(idCategory)
   return (
     <View>
         <Button onPress={()=>Find(idCategory)} title='test'></Button>
