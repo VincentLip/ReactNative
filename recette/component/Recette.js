@@ -7,13 +7,13 @@ export default function Recette({navigation , route}) {
 
     const idCategory = route.params.idCategory
     const tmpRecette = []
-    console.log(idCategory)
     function Find(id){
 
         MEALS.forEach(element => {
-            if(id == element.categoryIds){
+
+            console.log(element.categoryIds.filter(e => e == id))
+            if(id == element.categoryIds.filter(e => e == id)){
                 tmpRecette.push(element)
-                console.log(tmpRecette)        
             }        
         })
         
@@ -23,21 +23,45 @@ export default function Recette({navigation , route}) {
     
   return (
     <View>
-        <Button onPress={()=>Find(idCategory)} title='test'></Button>
         <FlatList data={tmpRecette} renderItem={(itemData) => {
         return (
-            <View>
-                <Image source={itemData.item.imageUrl} style={styles.image} resizeMode='contain' />
-                <Text>{itemData.item.title}</Text>
-                <Text>{itemData.item.duration} {itemData.item.complexity} {itemData.item.affordability}</Text>
-            </View>
+            <Pressable onPress={() => navigation.navigate ("Detail", {recette : itemData.item})}>
+                <View style={styles.card}>
+                    <Image source={{uri : itemData.item.imageUrl}} style={styles.image}/>
+                    <Text style={styles.title}>{itemData.item.title}</Text>
+                    <Text style={styles.detail}>{itemData.item.duration} min {itemData.item.complexity} {itemData.item.affordability}</Text>
+                </View>
+            </Pressable>
         )
-      }} keyExtractor={(item,index) => {
+    }} keyExtractor={(item,index) => {
         return item.id
-      }}></FlatList>
+    }}></FlatList>
     </View>
-   
+
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    image : {
+        width: "100%", 
+        height: 300
+    },
+    card : {
+        flex : 1,
+        border : "solid",
+        borderRadius : 100,
+        margin : 10,    
+    },
+    title : {
+        fontSize :30,
+        textAlign : "center"       
+    },
+    detail : {
+
+        fontSize : 15,
+        color :"black",
+        textAlign : "center",
+        textTransform : "uppercase"
+    }
+
+})
