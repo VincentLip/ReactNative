@@ -1,6 +1,6 @@
 import {Button,FlatList,Image,Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { MEALS } from '../data/data'
+import React, { useLayoutEffect } from 'react'
+import { CATEGORIES, MEALS } from '../data/data'
 
 
 export default function Recette({navigation , route}) {
@@ -20,6 +20,15 @@ export default function Recette({navigation , route}) {
     }
     Find(idCategory)
 
+    useLayoutEffect(()=> {
+            const categoryTitle = CATEGORIES.find(
+                (category) => category.id == idCategory
+            ).title;
+
+            navigation.setOptions({
+                title : categoryTitle
+            })
+    },[idCategory,navigation])
     
   return (
     <View>
