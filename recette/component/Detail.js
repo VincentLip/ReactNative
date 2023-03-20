@@ -1,9 +1,22 @@
 import { Image,ScrollView,StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
+import { MEALS } from '../data/data';
 
 export default function Detail({navigation ,route}) {
 
     const recette = route.params.recette
+
+
+    useLayoutEffect(()=> {
+      const recetteTitle = MEALS.find(
+          (recipe) => recipe.id == recette.id
+      ).title;
+
+      navigation.setOptions({
+          title : recetteTitle
+      })
+    },[recette.id,navigation])
+
   return (
     <ScrollView style={styles.container}>
         <Image source={{uri : recette.imageUrl}} style={styles.image}/>
