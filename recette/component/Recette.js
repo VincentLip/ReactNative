@@ -54,14 +54,16 @@ const styles = StyleSheet.create({
     },
     title : {
         fontSize :30,
-        textAlign : "center"       
+        textAlign : "center",
+         
     },
     detail : {
 
         fontSize : 15,
         color :"black",
         textAlign : "center",
-        textTransform : "uppercase"
+        textTransform : "uppercase",
+        margin : 5   
     }
 
 })
